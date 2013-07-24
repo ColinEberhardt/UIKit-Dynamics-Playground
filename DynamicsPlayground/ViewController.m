@@ -37,7 +37,7 @@
     _gravity = [[UIGravityBehavior alloc] initWithItems:@[square]];
     [_animator addBehavior:_gravity];
     
-    _collision = [[UICollisionBehavior alloc] initWithItems:@[square]];
+    _collision = [[UICollisionBehavior alloc] initWithItems:@[square, barrier]];
     _collision.translatesReferenceBoundsIntoBoundary = YES;
     [_animator addBehavior:_collision];
 }
