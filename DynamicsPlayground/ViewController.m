@@ -46,8 +46,15 @@
 }
 
 - (void)collisionBehavior:(UICollisionBehavior *)behavior beganContactForItem:(id<UIDynamicItem>)item withBoundaryIdentifier:(id<NSCopying>)identifier atPoint:(CGPoint)p {
-    NSLog(@"Boundary contact occurred - %@", identifier);
+    
+    UIView* view = (UIView*)item;
+    view.backgroundColor = [UIColor yellowColor];
+    [UIView animateWithDuration:0.3
+                     animations:^{
+        view.backgroundColor = [UIColor grayColor];
+    }];
 }
+
 
 
 - (void)didReceiveMemoryWarning
