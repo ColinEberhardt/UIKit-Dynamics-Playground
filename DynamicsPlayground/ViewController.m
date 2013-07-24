@@ -37,7 +37,8 @@
     _gravity = [[UIGravityBehavior alloc] initWithItems:@[square]];
     [_animator addBehavior:_gravity];
     
-    _collision = [[UICollisionBehavior alloc] initWithItems:@[square, barrier]];
+    _collision = [[UICollisionBehavior alloc] initWithItems:@[square]];
+    [_collision addBoundaryWithIdentifier:@"barrier" fromPoint:barrier.frame.origin toPoint:CGPointMake(barrier.frame.origin.x + barrier.frame.size.width, barrier.frame.origin.y)];
     _collision.translatesReferenceBoundsIntoBoundary = YES;
     [_animator addBehavior:_collision];
 }
