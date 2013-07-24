@@ -16,6 +16,7 @@
 {
     UIDynamicAnimator* _animator;
     UIGravityBehavior* _gravity;
+    UICollisionBehavior* _collision;
 }
 
 - (void)viewDidLoad
@@ -32,6 +33,10 @@
     
     _gravity = [[UIGravityBehavior alloc] initWithItems:@[square]];
     [_animator addBehavior:_gravity];
+    
+    _collision = [[UICollisionBehavior alloc] initWithItems:@[square]];
+    _collision.translatesReferenceBoundsIntoBoundary = YES;
+    [_animator addBehavior:_collision];
 }
 
 - (void)didReceiveMemoryWarning
