@@ -42,6 +42,10 @@
     _collision.translatesReferenceBoundsIntoBoundary = YES;
     _collision.collisionDelegate = self;
     
+    UIDynamicItemBehavior* itemBehaviour = [[UIDynamicItemBehavior alloc] initWithItems:@[square]];
+    itemBehaviour.elasticity = 0.5;
+    [_animator addBehavior:itemBehaviour];
+    
     [_animator addBehavior:_collision];
 }
 
