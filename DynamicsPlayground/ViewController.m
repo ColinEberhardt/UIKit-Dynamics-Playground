@@ -8,7 +8,7 @@
 
 #import "ViewController.h"
 
-@interface ViewController ()
+@interface ViewController () <UICollisionBehaviorDelegate>
 
 @end
 
@@ -40,12 +40,15 @@
     _collision = [[UICollisionBehavior alloc] initWithItems:@[square]];
     [_collision addBoundaryWithIdentifier:@"barrier" fromPoint:barrier.frame.origin toPoint:CGPointMake(barrier.frame.origin.x + barrier.frame.size.width, barrier.frame.origin.y)];
     _collision.translatesReferenceBoundsIntoBoundary = YES;
+    _collision.collisionDelegate = self;
     
-    _collision.action =  ^{
-        NSLog(@"%@", NSStringFromCGAffineTransform(square.transform));
-    };
     [_animator addBehavior:_collision];
 }
+
+- (void)collisionBehavior:(UICollisionBehavior *)behavior beganContactForItem:(id<UIDynamicItem>)item withBoundaryIdentifier:(id<NSCopying>)identifier atPoint:(CGPoint)p {
+    NSLog(@"Boundary contact occurred - %@", identifier);
+}
+
 
 - (void)didReceiveMemoryWarning
 {
