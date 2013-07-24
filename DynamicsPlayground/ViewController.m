@@ -18,6 +18,10 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+    
+    UIView* square = [[UIView alloc] initWithFrame:CGRectMake(100, 100, 100, 100)];
+    square.backgroundColor = [UIColor grayColor];
+    [self.view addSubview:square];
 }
 
 - (void)didReceiveMemoryWarning
