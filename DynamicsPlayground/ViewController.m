@@ -28,6 +28,9 @@
     square.backgroundColor = [UIColor grayColor];
     [self.view addSubview:square];
     
+    UIView* barrier = [[UIView alloc] initWithFrame:CGRectMake(0, 300, 130, 20)];
+    barrier.backgroundColor = [UIColor redColor];
+    [self.view addSubview:barrier];
     
     _animator = [[UIDynamicAnimator alloc] initWithReferenceView:self.view];
     
