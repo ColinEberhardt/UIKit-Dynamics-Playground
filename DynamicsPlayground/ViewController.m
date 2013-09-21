@@ -70,6 +70,10 @@
         [_collision addItem:square];
         [_gravity addItem:square];
         
+        UIPushBehavior* push = [[UIPushBehavior alloc] initWithItems:@[view] mode:UIPushBehaviorModeInstantaneous];
+        [push setAngle:-M_PI/2 magnitude:8.0f];
+        [_animator addBehavior:push];
+        
         UIAttachmentBehavior* attach = [[UIAttachmentBehavior alloc] initWithItem:view attachedToItem:square];
         [_animator addBehavior:attach];
     }
