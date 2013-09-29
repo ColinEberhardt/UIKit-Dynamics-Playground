@@ -38,6 +38,20 @@
     _gravity = [[UIGravityBehavior alloc] initWithItems:@[square]];
     [_animator addBehavior:_gravity];
     
+    __block int frame = 0;
+    _gravity.action = ^() {
+        frame ++;
+        if (frame%5 == 0) {
+            UIView* trailSqaure = [[UIView alloc] initWithFrame:square.frame];
+            trailSqaure.transform = square.transform;
+            trailSqaure.layer.borderWidth = 1.0f;
+            // obtain the current square color via the presentationLayer (this gives the intermediate
+            // animation values)
+            trailSqaure.layer.borderColor = ((CALayer*)[square.layer presentationLayer]).backgroundColor;
+            [self.view addSubview:trailSqaure];
+        }
+    };
+    
     _collision = [[UICollisionBehavior alloc] initWithItems:@[square]];
     [_collision addBoundaryWithIdentifier:@"barrier" fromPoint:barrier.frame.origin toPoint:CGPointMake(barrier.frame.origin.x + barrier.frame.size.width, barrier.frame.origin.y)];
     _collision.translatesReferenceBoundsIntoBoundary = YES;
